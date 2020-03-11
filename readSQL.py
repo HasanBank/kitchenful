@@ -16,8 +16,7 @@ def getAmountOfIngredientsOfRecipe(sqliteConnection,cursor,recipeName):
 
 	sqlite_select_query = " SELECT id from recipes where Name LIKE '%s'" %keyword
 	sqlite_merged_query = " Select Count(recipes_ingredients.ingredient_id) as '%s' , recipes.name FROM recipes_ingredients INNER JOIN recipes ON recipes_ingredients.recipe_id = recipes.id Where recipes.id In (%s) GROUP BY recipes_ingredients.recipe_id " %(amountOfIngredients, sqlite_select_query)  
-	print(sqlite_merged_query)
-
+	
 	printOrExecuteSQL(cursor,sqlite_merged_query,True)
 
 
