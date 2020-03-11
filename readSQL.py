@@ -7,9 +7,8 @@ def readAllProducts(sqliteConnection,cursor):
 	printResult(cursor,sqlite_select_query)
 
 def getAmount(sqliteConnection,cursor,productName):
-	#Todo Regex
-	sqlite_select_query = " SELECT Amount, Amount_Unit from products where Name =  '%s'" %productName
-	print(sqlite_select_query)
+	keyword = "%" + productName + "%"
+	sqlite_select_query = " SELECT Amount, Amount_Unit from products where Name LIKE '%s'" %keyword
 	printResult(cursor,sqlite_select_query)
 
 
